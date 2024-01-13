@@ -2,7 +2,7 @@ from flask import Flask, request, redirect, render_template
 
 app = Flask(__name__)
 
-@app.route('/tester')
+@app.route('/tester', methods=['POST'])
 def tester():
     return redirect('https://tonyarkaysia.github.io/isl-cybergateway')
 
