@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect
-import psycopg2
+from sqlalchemy import create_engine
 import os
 import bcrypt
 from cryptography.fernet import Fernet
@@ -7,15 +7,12 @@ from cryptography.fernet import Fernet
 app = Flask(__name__)
 
 # Database connection setup
+
+
 def get_db_connection():
-    conn = psycopg2.connect(
-        host=os.getenv('PGHOST'),
-        dbname=os.getenv('PGDATABASE'),
-        user=os.getenv('PGUSER'),
-        password=os.getenv('PGPASSWORD'),
-        port=os.getenv('PGPORT')
-    )
-    return conn
+    database_url = os.getenv("DATABASE_URL")  # Get URL from environment variable
+    return create_engine(database_url)
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -54,4 +51,7 @@ def add_api_key():
 
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
+
+
+
 
