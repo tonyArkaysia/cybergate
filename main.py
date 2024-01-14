@@ -1,7 +1,6 @@
 from flask import Flask, request, redirect
 import psycopg2
 import os
-from config import access_cred
 import bcrypt
 from cryptography.fernet import Fernet
 
