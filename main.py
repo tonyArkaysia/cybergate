@@ -10,11 +10,11 @@ app = Flask(__name__)
 # Database connection setup
 def get_db_connection():
     conn = psycopg2.connect(
-        host=os.getenv('DB_HOST'),
-        dbname=os.getenv('DB_NAME'),
-        user=os.getenv('DB_USER'),
-        password=os.getenv('DB_PASSWORD'),
-        port=os.getenv('DB_PORT')
+        host=os.getenv('PGHOST'),
+        dbname=os.getenv('PGDATABASE'),
+        user=os.getenv('PGUSER'),
+        password=os.getenv('PGPASSWORD'),
+        port=os.getenv('PGPORT')
     )
     return conn
 @app.route('/login', methods=['GET', 'POST'])
@@ -53,7 +53,4 @@ def add_api_key():
 
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
-
-
-
 
