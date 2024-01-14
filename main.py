@@ -19,7 +19,7 @@ def login():
         password = request.form['password'].encode('utf-8')  # Ensure password is in bytes
 
         # Query to retrieve the user's stored hash
-        user = db.execute(text('SELECT password_hash FROM clientele WHERE username = :username'), {"username": username}).fetchone()
+        user = db.execute(text('SELECT access_cred FROM clientele WHERE username = :username'), {"username": username}).fetchone()
 
         if user and bcrypt.checkpw(password, user.access_cred.encode('utf-8')):
             return redirect('https://tonyarkaysia.github.io/isl-profile')
