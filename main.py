@@ -7,7 +7,7 @@ import bcrypt
 app = Flask(__name__)
 
 # Database connection setup
-engine = create_engine(os.getenv("DATABASE_URL"))
+engine = create_engine(os.getenv("postgresql://postgres:2Cc-ebBefcfe1aD*Ag4-4GEF52Faa63B@postgres.railway.internal:5432/railway"))
 db = scoped_session(sessionmaker(bind=engine))
 
 @app.route('/login', methods=['GET', 'POST'])
