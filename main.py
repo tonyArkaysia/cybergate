@@ -17,6 +17,8 @@ def get_db_connection():
         port=os.getenv('PGPORT')
     )
     return conn
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
