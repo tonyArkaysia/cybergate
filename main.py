@@ -7,7 +7,7 @@ import bcrypt
 app = Flask(__name__)
 
 # Database connection setup
-database_url = os.getenv("DATABASE_URL", "postgresql://postgres:2Cc-ebBefcfe1aD*Ag4-4GEF52Faa63B@roundhouse.proxy.rlwy.net:52932/railway")
+database_url = os.getenv("DATABASE_URL")
 
 engine = create_engine(database_url)
 db = scoped_session(sessionmaker(bind=engine))
